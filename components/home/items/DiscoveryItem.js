@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import colors from "../../assets/colors/colors";
+import colors from "../../../assets/colors/colors";
 import Entypo from "react-native-vector-icons/Entypo";
 
 const DiscoveryItem = ({ item, navigation }) => {
