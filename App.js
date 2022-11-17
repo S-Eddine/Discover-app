@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Entypo from "react-native-vector-icons/Entypo";
-import Home from "./components/Home";
+import Home from "./components/home/index";
 import Liked from "./components/Liked";
 import Profile from "./components/Profile";
 import colors from "./assets/colors/colors";
