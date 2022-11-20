@@ -9,7 +9,8 @@ import Profile from "./components/Profile";
 import colors from "./assets/colors/colors";
 import Details from "./components/Details";
 import { useState } from "react";
-import * as Font from 'expo-font';
+import * as Font from "expo-font";
+import {KhatamatAppProvider} from './components/provider/appContext'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,7 +18,7 @@ const Tab = createBottomTabNavigator();
 let customFonts = {
   "Lato-Bold": require("./assets/fonts/Lato-Bold.ttf"),
   "Lato-Regular": require("./assets/fonts/Lato-Regular.ttf"),
-}
+};
 
 const TabNavigator = () => {
   return (
@@ -36,7 +37,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ color }) => (
             <Entypo name="home" size={32} color={color} />
           ),
-          headerShown: false
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -46,7 +47,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ color }) => (
             <Entypo name="heart" size={32} color={color} />
           ),
-          headerShown: false
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -56,7 +57,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ color }) => (
             <Entypo name="user" size={32} color={color} />
           ),
-          headerShown: false
+          headerShown: false,
         }}
       />
     </Tab.Navigator>
@@ -68,32 +69,38 @@ export default function App() {
 
   const loadFontsAsync = async () => {
     await Font.loadAsync(customFonts);
-    setIsFontsLoaded(true)
-  }
+    setIsFontsLoaded(true);
+  };
 
   useState(() => {
-    loadFontsAsync().catch(e => console.log(e))
-  }, [])
+    loadFontsAsync().catch((e) => console.log(e));
+  }, []);
 
   if (!fontsLoaded) {
-    return <View><Text>Loading font...</Text></View>;
+    return (
+      <View>
+        <Text>Loading font...</Text>
+      </View>
+    );
   }
-  
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="TabNavigator"
-          component={TabNavigator}
-          options={{ headerShown: false}}
-        />
-        <Stack.Screen
-          name="Details"
-          component={Details}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <KhatamatAppProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="TabNavigator"
+            component={TabNavigator}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Details"
+            component={Details}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </KhatamatAppProvider>
   );
 }
 
