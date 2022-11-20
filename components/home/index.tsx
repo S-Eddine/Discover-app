@@ -1,16 +1,11 @@
-import React, { ReactNode, useContext, useEffect, useState } from "react";
-import { View, StyleSheet, ScrollView, Text } from "react-native";
+import React, { ReactNode, useContext, useEffect } from "react";
+import { View, StyleSheet, Text } from "react-native";
 import colors from "../../assets/colors/colors";
-
-import Header from "./Header";
-import Discover from "./Discover";
-import Activities from "./Activities";
-import LearnMore from "./LearnMore";
-import FormLayout from "../Components/Layout/FormLayout";
 import Welcome from "../Components/Steps/Welcome";
 import CreateName from "../Components/Steps/Create/Name";
-import { TSteps } from "../provider/types";
 import { AppContext } from "../provider/appContext";
+import CreateNumber from "../Components/Steps/Create/Number";
+import CreateLevel from "../Components/Steps/Create/Level";
 
 type HomeProps = {
   navigation: any;
@@ -36,6 +31,12 @@ const Home = ({ navigation }: HomeProps) => {
         return (
           <CreateName />
         );
+      
+      case 'STEP_CREATE_NOR':
+        return <CreateNumber />
+      
+      case 'STEP_CREATE_LVL':
+        return <CreateLevel />
 
       default:
         return (

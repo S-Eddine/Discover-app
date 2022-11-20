@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import colors from "../../../assets/colors/colors";
 import { AppContext } from "../../provider/appContext";
@@ -10,12 +10,18 @@ type WelcomeProps = {
 const Welcome = ({}: WelcomeProps) => {
     const {context, dispatch} = useContext(AppContext);
 
+
+  useEffect(() => {
+    console.log("Re-render welcome")
+  })
+
   const onJoinPress = () => {
     dispatch({...context, step: "STEP_JOIN"})
   };
 
   const onStartPress = () => {
     dispatch({...context, step: "STEP_CREATE_NAME"})
+    console.log("SEA -> ", context)
   };
   return (
     <FormLayout

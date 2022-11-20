@@ -24,15 +24,8 @@ const initState = (initialState: IAppContext) => {
 const AppContext = createContext<AppContextType>({} as AppContextType);
 
 const KhatamatAppProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [step, setStep] = useState<TSteps>("STEP_WELCOM");
-
-  useEffect(() => {
-    console.log("Step : " ,step)
-  })
-
   const initialState: IAppContext = {
-    step,
-    setStep,
+    step : 'STEP_WELCOM'
   };
 
   const [readerContext, dispatch] = useReducer(
