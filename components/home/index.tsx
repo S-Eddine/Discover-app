@@ -6,6 +6,7 @@ import CreateName from "../Components/Steps/Create/Name";
 import { AppContext } from "../provider/appContext";
 import CreateNumber from "../Components/Steps/Create/Number";
 import CreateLevel from "../Components/Steps/Create/Level";
+import CreateEndDate from "../Components/Steps/Create/Date";
 
 type HomeProps = {
   navigation: any;
@@ -14,12 +15,6 @@ type HomeProps = {
 const Home = ({ navigation }: HomeProps) => {
   
   const { context } = useContext(AppContext);
-  console.log("Step changed 1");
-
-
-  useEffect(() => {
-    console.log("Step changed");
-  }, [context.step]);
 
   const getContent = (): ReactNode => {
     switch (context.step) {
@@ -37,6 +32,9 @@ const Home = ({ navigation }: HomeProps) => {
       
       case 'STEP_CREATE_LVL':
         return <CreateLevel />
+
+      case 'STEP_CREATE_DATE':
+        return <CreateEndDate />
 
       default:
         return (

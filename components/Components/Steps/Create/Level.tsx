@@ -25,13 +25,8 @@ const CreateLevel = ({}: CreateLevelProps) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(1);
 
   const handleSelectedLevel = (index: number) => {
-    console.log("SEA try ", index);
     setSelectedIndex(index);
   };
-
-  useEffect(() => {
-    console.log("Re-render Create");
-  });
 
   const handleNext = () => {
     dispatch({

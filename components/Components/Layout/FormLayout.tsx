@@ -4,27 +4,31 @@ import {
   KeyboardAvoidingView,
   Pressable,
   ScrollView,
+  StyleProp,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
   View,
+  ViewStyle,
 } from "react-native";
 import colors from "../../../assets/colors/colors";
 
 type FormLayoutProps = {
   title: string;
   subTitle: string;
+  style?: StyleProp<ViewStyle>;
   children?: ReactNode;
 };
 
 const FormLayout = ({
   title,
   subTitle,
+  style,
   children,
 }: FormLayoutProps) => {
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
       <View style={styles.container}>
         <View>
           <Text style={styles.title}>{title}</Text>
